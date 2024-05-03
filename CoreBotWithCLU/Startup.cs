@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
@@ -10,6 +11,7 @@ using Microsoft.BotBuilderSamples.Bots;
 using Microsoft.BotBuilderSamples.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 
 namespace Microsoft.BotBuilderSamples
 {
@@ -37,6 +39,8 @@ namespace Microsoft.BotBuilderSamples
 
             // Register LUIS recognizer
             services.AddSingleton<FlightBookingRecognizer>();
+
+            services.AddLocalization(options => options.ResourcesPath = "");
 
             // Register the BookingDialog.
             services.AddSingleton<BookingDialog>();

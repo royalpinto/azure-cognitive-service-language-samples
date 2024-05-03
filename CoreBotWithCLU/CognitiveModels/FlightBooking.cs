@@ -20,6 +20,13 @@ namespace Microsoft.BotBuilderSamples
             BookFlight,
             Cancel,
             GetWeather,
+            Transfer,
+            Init,
+
+            OrderPizza,
+            CancelPizza,
+            TrackPizza,
+
             None
         }
 
@@ -76,6 +83,15 @@ namespace Microsoft.BotBuilderSamples
             public string GetToCity() => GetToCityList().FirstOrDefault()?.Text;
 
             public string GetFlightDate() => GetFlightDateList().FirstOrDefault()?.Text;
+
+
+            public CluEntity[] GetPizzaNameList() => Entities.Where(e => e.Category == "Name").ToArray();
+            public CluEntity[] GetPizzaSizeList() => Entities.Where(e => e.Category == "Size").ToArray();
+            public CluEntity[] GetPizzaExtraList() => Entities.Where(e => e.Category == "Extra").ToArray();
+
+            public string GetPizzaName() => GetPizzaNameList().FirstOrDefault()?.Text;
+            public string GetPizzaSize() => GetPizzaSizeList().FirstOrDefault()?.Text;
+            public string GetPizzaExtra() => GetPizzaExtraList().FirstOrDefault()?.Text;
         }
     }
 }
